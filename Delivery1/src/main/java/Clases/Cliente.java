@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -10,14 +8,20 @@ package Clases;
  */
 public class Cliente extends Persona {
     private String celular;
+    private ArrayList<Direccion> direccion;
 
-    public Cliente(String celular) {
-        this.celular = celular;
+    public Cliente() {
     }
 
-    public Cliente(String celular, String cedula, String apellidos, String nombres, String mail) {
+    public Cliente(String celular, ArrayList<Direccion> direccion) {
+        this.celular = celular;
+        this.direccion = direccion;
+    }
+
+    public Cliente(String celular, ArrayList<Direccion> direccion, String cedula, String apellidos, String nombres, String mail) {
         super(cedula, apellidos, nombres, mail);
         this.celular = celular;
+        this.direccion = direccion;
     }
 
     public String getCelular() {
@@ -28,8 +32,12 @@ public class Cliente extends Persona {
         this.celular = celular;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "celular=" + celular + '}';
+    public ArrayList<Direccion> getDireccion() {
+        return direccion;
     }
+
+    public void setDireccion(ArrayList<Direccion> direccion) {
+        this.direccion = direccion;
+    }
+    
 }
