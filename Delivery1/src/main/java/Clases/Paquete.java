@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.util.Date;
+
 /**
  *
  * @author Pablo
@@ -14,8 +16,14 @@ public class Paquete {
     private String descripcion;
     private double peso;
     private double alto;
+    private Estado[] estado;
 
     public Paquete() {
+        this.estado = new Estado[] {
+            new Estado(1, "Creado", new Date(), ""),
+            new Estado(2, "Despachado", new Date(), ""),
+            new Estado(3, "Entregado", new Date(), "")
+        };
     }
 
     public Paquete(int idPaquete, String codigo, String descripcion, double peso, double alto) {
@@ -24,6 +32,11 @@ public class Paquete {
         this.descripcion = descripcion;
         this.peso = peso;
         this.alto = alto;
+        this.estado = new Estado[] {
+            new Estado(1, "Creado", new Date(), ""),
+            new Estado(2, "Despachado", new Date(), ""),
+            new Estado(3, "Entregado", new Date(), "")
+        };
     }
 
     public void setIdPaquete(int idPaquete) {
@@ -46,6 +59,10 @@ public class Paquete {
         this.alto = alto;
     }
 
+    public void setEstado(Estado[] estado) {
+        this.estado = estado;
+    }
+
     public int getIdPaquete() {
         return idPaquete;
     }
@@ -64,6 +81,10 @@ public class Paquete {
 
     public double getAlto() {
         return alto;
+    }
+
+    public Estado[] getEstado() {
+        return estado;
     }
 
     @Override
