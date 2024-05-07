@@ -55,6 +55,10 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "cedula=" + cedula + ", apellidos=" + apellidos + ", nombres=" + nombres + ", mail=" + mail + '}';
+        String reporte = "\nDATOS CLIENTE\n";
+        reporte = String.format("%sCedula: %s  |  Nombres y apellidos: %s %s  |  Correo: %s", 
+                reporte, cedula, nombres, apellidos, mail);
+        
+        return reporte;
     }
 }
