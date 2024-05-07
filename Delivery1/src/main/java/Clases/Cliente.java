@@ -11,11 +11,13 @@ public class Cliente extends Persona {
     private ArrayList<Direccion> direccion;
 
     public Cliente() {
+        this.direccion = new ArrayList<>();
     }
 
     public Cliente(String celular, ArrayList<Direccion> direccion) {
         this.celular = celular;
         this.direccion = direccion;
+        this.direccion = new ArrayList<>();
     }
 
     public Cliente(String celular, ArrayList<Direccion> direccion, String cedula, String apellidos, String nombres, String mail) {
