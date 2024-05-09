@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ruben
@@ -19,10 +21,12 @@ public class Repartidor extends Empleado{
         this.zona = zona;
     }
 
-    public Repartidor(int zona, String ciudad, String cedula, String apellidos, String nombres, String mail) {
-        super(ciudad, cedula, apellidos, nombres, mail);
+    public Repartidor(int zona, String ciudad, ArrayList<Entrega> entrega, String cedula, String apellidos, String nombres, String mail) {
+        super(ciudad, entrega, cedula, apellidos, nombres, mail);
         this.zona = zona;
     }
+
+
 
     public int getZona() {
         return zona;
