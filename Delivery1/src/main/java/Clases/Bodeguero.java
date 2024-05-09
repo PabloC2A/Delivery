@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ruben
@@ -19,8 +21,8 @@ public class Bodeguero extends Empleado {
         this.local = local;
     }
 
-    public Bodeguero(String local, String ciudad, String cedula, String apellidos, String nombres, String mail) {
-        super(ciudad, cedula, apellidos, nombres, mail);
+    public Bodeguero(String local, String ciudad, ArrayList<Entrega> entrega, String cedula, String apellidos, String nombres, String mail) {
+        super(ciudad, entrega, cedula, apellidos, nombres, mail);
         this.local = local;
     }
 
