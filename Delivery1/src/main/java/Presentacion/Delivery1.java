@@ -5,13 +5,57 @@
 
 package Presentacion;
 
-/**
- *
- * @author Usuario
- */
-public class Delivery1 {
+import Clases.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
+
+public class Delivery1 {
+    static Scanner entrada = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        ArrayList<Entrega> listaEntregas = new ArrayList<>();
+        ArrayList<Paquete> listaPaquetes = new ArrayList<>();
+        Estado[] estados = new Estado[4];
+
+        estados[0] = new Estado(1, "creado", new Date(), "observación");
+        estados[1] = new Estado(2, "despachado", new Date(), "observación");
+        estados[2] = new Estado(3, "entregado", new Date(), "observación");
+        // estados[2] = new Estado(3, "entregado", new Date(), "observación");
+
+        int op;
+        String aux;
+
+        do {
+            System.out.println("Ingresar Cliente   [1]");
+            System.out.println("Ingresar Dirección [2]");
+            System.out.println("Crear Paquete     [3]");
+            System.out.println("Presentar Datos   [4]");
+            System.out.println("Salir             [5]");
+
+            aux = entrada.nextLine();
+            op = Integer.parseInt(aux);
+
+            switch (op) {
+                case 1:
+                    // listaClientes.add(ingresarCliente());
+                    break;
+                case 2:
+                    // listaDirecciones.add(ingresarDireccion());
+                    break;
+                case 3:
+                    // listaPaquetes.add(crearPaquete(listaClientes, listaDirecciones, estados[0]));
+                    break;
+                case 4:
+                    // presentarDatos(listaPaquetes);
+                    break;
+                case 5:
+                    System.out.println("Chao");
+                default:
+                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+            }
+
+        } while (op != 5);
     }
 }
