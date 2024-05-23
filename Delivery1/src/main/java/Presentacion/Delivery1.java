@@ -19,10 +19,10 @@ public class Delivery1 {
         ArrayList<Paquete> listaPaquetes = new ArrayList<>();
         Estado[] estados = new Estado[4];
 
-        estados[0] = new Estado(1, "creado", new Date(), "observación");
-        estados[1] = new Estado(2, "despachado", new Date(), "observación");
-        estados[2] = new Estado(3, "entregado", new Date(), "observación");
-        // estados[2] = new Estado(3, "entregado", new Date(), "observación");
+        estados[0] = new Estado(1, "Pendiente", new Date(), "observación");
+        estados[1] = new Estado(2, "Creado", new Date(), "observación");
+        estados[2] = new Estado(3, "Despachado", new Date(), "observación");
+        estados[3] = new Estado(4, "Entregado", new Date(), "observación");
 
         int op;
         String aux;

@@ -9,18 +9,13 @@ import java.util.ArrayList;
 public class Cliente extends Persona {
     private String celular;
     private ArrayList<Direccion> direccion;
-    private ArrayList<Entrega> entrega;
 
     public Cliente() {
-        this.direccion = new ArrayList<>();
-        this.entrega = new ArrayList();
     }
 
     public Cliente(String celular, ArrayList<Direccion> direccion) {
         this.celular = celular;
         this.direccion = direccion;
-        this.direccion = new ArrayList<>();
-        this.entrega = new ArrayList();
     }
 
     public Cliente(String celular, ArrayList<Direccion> direccion, String cedula, String apellidos, String nombres, String mail) {
@@ -45,16 +40,8 @@ public class Cliente extends Persona {
         this.direccion = direccion;
     }
 
-    public ArrayList<Entrega> getEntrega() {
-        return entrega;
-    }
-
-    public void setEntrega(ArrayList<Entrega> entrega) {
-        this.entrega = entrega;
-    }
-
     @Override
     public String toString() {
-        return "Cliente{" + "celular=" + celular + ", direccion=" + direccion + ", entrega=" + entrega + '}';
+        return "Cliente{" + "celular=" + celular + ", direccion=" + direccion + '}';
     }
 }

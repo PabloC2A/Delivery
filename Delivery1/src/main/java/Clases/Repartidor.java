@@ -25,15 +25,18 @@ public class Repartidor extends Empleado{
         super(ciudad, entrega, cedula, apellidos, nombres, mail);
         this.zona = zona;
     }
-
-
-
+    
     public int getZona() {
         return zona;
     }
 
     public void setZona(int zona) {
         this.zona = zona;
+    }
+
+    @Override
+    public String toString() {
+        return "Repartidor{" + "zona=" + zona + '}';
     }
     
 }

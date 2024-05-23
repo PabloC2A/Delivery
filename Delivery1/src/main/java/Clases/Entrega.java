@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,42 +15,52 @@ public class Entrega {
     private String codigo;
     private Date fecha;
     private String observacion;
+    private ArrayList<Entrega> entrega;
 
     public Entrega() {
     }
 
-    public Entrega(String codigo, Date fecha, String observacion) {
+    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Entrega> entrega) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.observacion = observacion;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
+        this.entrega = entrega;
     }
 
     public String getCodigo() {
         return codigo;
     }
 
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     public Date getFecha() {
         return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getObservacion() {
         return observacion;
     }
 
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public ArrayList<Entrega> getEntrega() {
+        return entrega;
+    }
+
+    public void setEntrega(ArrayList<Entrega> entrega) {
+        this.entrega = entrega;
+    }
+
     @Override
     public String toString() {
-        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + '}';
-    }       
+        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", entrega=" + entrega + '}';
+    }
 }
