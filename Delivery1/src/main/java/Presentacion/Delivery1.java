@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Clases.*;
+import Logica.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -15,8 +16,9 @@ public class Delivery1 {
     static Scanner entrada = new Scanner(System.in);
     public static void main(String[] args) {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-        ArrayList<Entrega> listaEntregas = new ArrayList<>();
-        ArrayList<Paquete> listaPaquetes = new ArrayList<>();
+        ArrayList<Direccion> listaDirecciones = new ArrayList<>();
+        // ArrayList<Entrega> listaEntregas = new ArrayList<>();
+        // ArrayList<Paquete> listaPaquetes = new ArrayList<>();
         Estado[] estados = new Estado[4];
 
         estados[0] = new Estado(1, "Pendiente", new Date(), "observación");
@@ -94,11 +96,11 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                            // metodo para registrar un nuevo cliente
+                            listaClientes.add(ingresarCliente());
                         break;
                         }
                         case 2 -> {
-                            // metodo para registrar un nuevo cliente y sus direcciones
+                            listaDirecciones.add(ingresarDireccion());
                         break;
                         }
                         case 3 -> {
@@ -118,4 +120,95 @@ public class Delivery1 {
 
         } while (op != 4);
     }
+    
+    public static Cliente ingresarCliente() {
+        Scanner entrada = new Scanner(System.in);
+        Cliente cliente = new Cliente();
+        
+        System.out.println("Ingrese el nombre del cliente:");
+        entrada.nextLine();
+        cliente.setNombres(entrada.nextLine());
+        System.out.println("Ingrese el apellido del cliente:");
+        cliente.setApellidos(entrada.nextLine());
+        System.out.println("Ingrese la cédula del cliente:");
+        cliente.setCedula(entrada.nextLine());
+        System.out.println("Ingrese su número celular:");
+        cliente.setCelular(entrada.nextLine());
+        System.out.println("Ingrese el correo electrónico del cliente:");
+        cliente.setMail(entrada.nextLine());
+
+        // Validar la cédula y el correo electrónico
+        if (!validarCedula.ValidaCedula(cliente)) {
+            System.out.println("La cédula ingresada no es válida.");
+            return null;
+        }
+        if (!validarEmail.validarCorreo(cliente)) {
+            System.out.println("El correo electrónico ingresado no es válido.");
+            return null;
+        }
+
+        // Agregar el cliente a la lista
+        System.out.println("Cliente agregado exitosamente.");
+        return cliente;
+    }
+
+    public static Direccion ingresarDireccion() {
+        Scanner entrada = new Scanner(System.in);
+        Direccion direccion = new Direccion();
+
+        System.out.printf("Ingresar código de casa");
+        direccion.setCodigo(entrada.nextLine());
+        System.out.println("Ingrese la calle principal:");
+        entrada.nextLine();
+        direccion.setCalle1(entrada.nextLine());
+        System.out.println("Ingrese la calle secundaria:");
+        direccion.setCalle2(entrada.nextLine());
+        System.out.println("Ingrese una referencia:");
+        direccion.setReferencia(entrada.nextLine());
+
+        // Validar que las calles no sean iguales
+        if (!validarDireccion.validarCalles(direccion)) {
+            System.out.println("Las calles ingresadas son iguales. Deben ser diferentes.");
+            return null;
+        }
+
+        // Agregar la dirección a la lista
+        System.out.println("Dirección agregada exitosamente.");
+        return direccion;
+    }
+    
+    /*public static Paquete crearPaquete(List<Cliente> listaClientes, List<DireccionEntrega> listaDireccion, Estado estado) {
+        Scanner entrada = new Scanner(System.in);
+        Paquete paquete = new Paquete();
+
+        System.out.println("Ingrese el id del paquete:");
+        paquete.setIdPaquete(entrada.nextInt());
+        System.out.println("Ingrese el código del paquete:");
+        entrada.nextLine();
+        paquete.setCodigo(entrada.nextLine());
+        System.out.println("Ingrese una descripción del paquete:");
+        paquete.setDescripcion(entrada.nextLine());
+        System.out.println("Ingrese el peso del paquete:");
+        paquete.setPeso(entrada.nextDouble());
+        System.out.println("Ingrese el largo del paquete:");
+        paquete.setLargo(entrada.nextInt());
+        System.out.println("Ingrese el ancho del paquete:");
+        paquete.setAncho(entrada.nextInt());
+
+        paquete.setCliente(encontrarClienteID(listaClientes));
+        paquete.setEstado(estado);
+        //paquete.setDireccionEntrega(encontrarDireccion(listaDireccion, paquete.getCliente()));
+
+        // Agregar el paquete a la lista
+        System.out.println("Paquete creado exitosamente.");
+        return paquete;
+    }
+
+    public static void presentarDatos(List<Paquete> listaPaquetes) {
+        System.out.println("------ DATOS DE PAQUETES ------");
+        for (Paquete paquete : listaPaquetes) {
+            // Aquí se debe imprimir la información relevante de cada paquete
+            System.out.println(listaPaquetes);
+        }
+    }*/
 }
