@@ -28,34 +28,94 @@ public class Delivery1 {
         String aux;
 
         do {
-            System.out.println("Ingresar Cliente   [1]");
-            System.out.println("Ingresar Dirección [2]");
-            System.out.println("Crear Paquete     [3]");
-            System.out.println("Presentar Datos   [4]");
-            System.out.println("Salir             [5]");
+            System.out.println("-----------------------");
+            System.out.println("|Cliente         [1]  |");
+            System.out.println("|Repartidor      [2]  |");
+            System.out.println("|Bodeguero       [3]  |");
+            System.out.println("|Salir           [4]  |");
+            System.out.println("-----------------------");
 
             aux = entrada.nextLine();
             op = Integer.parseInt(aux);
 
             switch (op) {
                 case 1:
-                    // listaClientes.add(ingresarCliente());
+                    do {
+                        System.out.println("--------------------------------------------------------");
+                        System.out.println("|Revisar estado Paquete                           [1]  |");
+                        System.out.println("|Agregar nueva dirección o actualizar dirección   [2]  |");
+                        System.out.println("|Salir                                            [3]  |");
+                        System.out.println("--------------------------------------------------------");
+                        aux = entrada.nextLine();
+                        op = Integer.parseInt(aux);
+                        switch (op) {
+                            case 1 -> {
+                            // metodo para revisar
+                            break;
+                        }
+                        case 2 -> {
+                            // metodo para ingresar actual
+                        }
+                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n"); 
+                        }
+                        
+                    } while (op != 3);
+                
                     break;
+
                 case 2:
-                    // listaDirecciones.add(ingresarDireccion());
+                    do {
+                        System.out.println("--------------------------------------------");
+                        System.out.println("Registrar la entrega de una paquete   [1]  |");
+                        System.out.println("Salir                                 [2]  |");
+                        System.out.println("--------------------------------------------");
+                        aux = entrada.nextLine();
+                        op = Integer.parseInt(aux);
+                        switch (op) {
+                            case 1 -> {
+                                // metodo para agregar
+                                break;
+                            }
+                            default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                        }
+                    } while (op != 2);
+                    
                     break;
                 case 3:
-                    // listaPaquetes.add(crearPaquete(listaClientes, listaDirecciones, estados[0]));
-                    break;
-                case 4:
-                    // presentarDatos(listaPaquetes);
-                    break;
-                case 5:
-                    System.out.println("Chao");
+                    do {
+                        System.out.println("------------------------------------------");
+                        System.out.println("|Agregar un nuevo Cliente            [1]  |");
+                        System.out.println("|Ingresar direcciones del Cliente    [2]  |");
+                        System.out.println("|Registrar un nuevo paquete          [3]  |");
+                        System.out.println("|Despachar un paquete                [4]  |");
+                        System.out.println("|Salir                               [5]  |");
+                        System.out.println("------------------------------------------");
+                        aux = entrada.nextLine();
+                        op = Integer.parseInt(aux);
+                        switch (op) {
+                            case 1 -> {
+                            // metodo para registrar un nuevo cliente
+                        break;
+                        }
+                        case 2 -> {
+                            // metodo para registrar un nuevo cliente y sus direcciones
+                        break;
+                        }
+                        case 3 -> {
+                            // metodo para agregar
+                        break;
+                        }
+                        case 4 -> {
+                            // metodo para agregar
+                        }
+                        default -> 
+                            System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                        }
+                    } while (op != 5);
                 default:
-                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
             }
 
-        } while (op != 5);
+        } while (op != 4);
     }
 }
