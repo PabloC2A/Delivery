@@ -16,15 +16,17 @@ public class Entrega {
     private Date fecha;
     private String observacion;
     private ArrayList<Entrega> entrega;
+    private ArrayList<Cliente> cliente;
 
     public Entrega() {
     }
 
-    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Entrega> entrega) {
+    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Entrega> entrega, ArrayList<Cliente> cliente) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.observacion = observacion;
         this.entrega = entrega;
+        this.cliente = cliente;
     }
 
     public String getCodigo() {
@@ -59,8 +61,16 @@ public class Entrega {
         this.entrega = entrega;
     }
 
+    public ArrayList<Cliente> getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ArrayList<Cliente> cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public String toString() {
-        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", entrega=" + entrega + '}';
+        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", entrega=" + entrega + ", cliente=" + cliente + '}';
     }
 }
