@@ -61,5 +61,9 @@ public class Direccion {
     public void setActual(int actual) {
         this.actual = actual;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Direccion{" + "codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referencia=" + referencia + ", actual=" + actual + '}';
+    }
 }
