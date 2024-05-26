@@ -21,9 +21,9 @@ public class Paquete {
     public Paquete() {
         this.estado = new Estado[] {
             new Estado(1, "Creado", new Date(), ""),
-            new Estado(2, "Despachado", null, ""),
-            new Estado(3, "Entregado", null, ""),
-            new Estado(4, "Pendiente", null, "")
+            new Estado(2, "Pendiente", null, ""),
+            new Estado(3, "Despachado", null, ""),
+            new Estado(4, "Entregado", null, "")
         };
     }
 
@@ -35,9 +35,9 @@ public class Paquete {
         this.alto = alto;
         this.estado = new Estado[] {
             new Estado(1, "Creado", new Date(), ""),
-            new Estado(2, "Despachado", null, ""),
-            new Estado(3, "Entregado", null, ""),
-            new Estado(4, "Pendiente", null, "")
+            new Estado(2, "Pendiente", null, ""),
+            new Estado(3, "Despachado", null, ""),
+            new Estado(4, "Entregado", null, "")
         };
     }
 

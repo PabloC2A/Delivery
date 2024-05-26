@@ -21,12 +21,7 @@ public class Delivery1 {
         ArrayList<Entrega> listaEntregas = new ArrayList<>();
         ArrayList<Paquete> listaPaquetes = new ArrayList<>();
         Estado[] estados = new Estado[4];
-
-        estados[0] = new Estado(1, "Pendiente", new Date(), "observación");
-        estados[1] = new Estado(2, "Creado", new Date(), "observación");
-        estados[2] = new Estado(3, "Despachado", new Date(), "observación");
-        estados[3] = new Estado(4, "Entregado", new Date(), "observación");
-
+        
         int op;
         String aux;
 
@@ -53,7 +48,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                revisarEstadoPaquete(listaClientes);
+                                // revisarEstadoPaquete(listaClientes);
                             }
                             case 2 -> {
                                 actualizarDireccion(listaClientes);
@@ -188,7 +183,7 @@ public class Delivery1 {
         return cliente;
     }
 
-    public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
+    /*public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese la cédula del cliente:");
         String cedula = entrada.nextLine();
@@ -202,7 +197,29 @@ public class Delivery1 {
             }
         }
         System.out.println("Cliente no encontrado.");
-    }
+    }*/
+    
+    /*public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes, ArrayList<Paquete> listaPaquetes) {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese la cédula del cliente:");
+        String cedula = entrada.nextLine();
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equals(cedula)) {
+                for (Direccion direccion : cliente.getDireccion()) {
+                    System.out.println("Dirección: " + direccion);
+                }
+                System.out.println("Paquetes:");
+                for (Paquete paquete : listaPaquetes) {
+                    if (paquete.getCodigo().equals(cedula)) {
+                        System.out.println("ID: " + paquete.getIdPaquete() + " | Código: " + paquete.getCodigo() + " | Descripción: " + paquete.getDescripcion() + " | Estado: " + paquete.getEstadoActual());
+                    }
+                }
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado.");
+    }*/
 
     public static void actualizarDireccion(ArrayList<Cliente> listaClientes) {
         Scanner entrada = new Scanner(System.in);
