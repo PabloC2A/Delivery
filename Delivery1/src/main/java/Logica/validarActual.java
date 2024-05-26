@@ -55,9 +55,9 @@ public class validarActual {
             System.out.print("Referencia: ");
             String referencia = scanner.next();
 
-            Direccion nuevaDireccion = new Direccion(codigo, calle1, calle2, referencia, 1);
+            /*Direccion nuevaDireccion = new Direccion(codigo, calle1, calle2, referencia, 1, );
             direcciones.add(nuevaDireccion);
-            System.out.println("Nueva dirección agregada.");
+            System.out.println("Nueva dirección agregada.");*/
         }
     }
 }

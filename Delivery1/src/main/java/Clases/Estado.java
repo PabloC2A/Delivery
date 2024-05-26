@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -15,10 +16,20 @@ public class Estado {
     private String estado;
     private Date fecha;
     private String observacion;
+    private ArrayList<Paquete> idPaquete;
 
     public Estado() {
+        this.idPaquete = new ArrayList<>(4);
     }
 
+    public Estado(int tipo, String estado, Date fecha, String observacion, ArrayList<Paquete> idPaquete) {
+        this.tipo = tipo;
+        this.estado = estado;
+        this.fecha = fecha;
+        this.observacion = observacion;
+        this.idPaquete =idPaquete;
+    }
+    
     public Estado(int tipo, String estado, Date fecha, String observacion) {
         this.tipo = tipo;
         this.estado = estado;
@@ -26,40 +37,49 @@ public class Estado {
         this.observacion = observacion;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
-
     public int getTipo() {
         return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public String getEstado() {
         return estado;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public Date getFecha() {
         return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getObservacion() {
         return observacion;
     }
 
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public ArrayList<Paquete> getIdPaquete() {
+        return idPaquete;
+    }
+
+    public void setIdPaquete(ArrayList<Paquete> idPaquete) {
+        this.idPaquete = idPaquete;
+    }
+
     @Override
     public String toString() {
-        return "Estado{" + "tipo=" + tipo + ", estado=" + estado + ", fecha=" + fecha + ", observacion=" + observacion + '}';
+        return "Estado{" + "tipo=" + tipo + ", estado=" + estado + ", fecha=" + fecha + ", observacion=" + observacion + ", idPaquete=" + idPaquete + '}';
     }
+    
 }

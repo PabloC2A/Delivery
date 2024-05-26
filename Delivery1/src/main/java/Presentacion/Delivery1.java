@@ -48,7 +48,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                // revisarEstadoPaquete(listaClientes);
+                                revisarEstadoPaquete(listaClientes);
                             }
                             case 2 -> {
                                 actualizarDireccion(listaClientes);
@@ -183,7 +183,7 @@ public class Delivery1 {
         return cliente;
     }
 
-    /*public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
+    public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese la cédula del cliente:");
         String cedula = entrada.nextLine();
@@ -197,29 +197,7 @@ public class Delivery1 {
             }
         }
         System.out.println("Cliente no encontrado.");
-    }*/
-    
-    /*public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes, ArrayList<Paquete> listaPaquetes) {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese la cédula del cliente:");
-        String cedula = entrada.nextLine();
-
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getCedula().equals(cedula)) {
-                for (Direccion direccion : cliente.getDireccion()) {
-                    System.out.println("Dirección: " + direccion);
-                }
-                System.out.println("Paquetes:");
-                for (Paquete paquete : listaPaquetes) {
-                    if (paquete.getCodigo().equals(cedula)) {
-                        System.out.println("ID: " + paquete.getIdPaquete() + " | Código: " + paquete.getCodigo() + " | Descripción: " + paquete.getDescripcion() + " | Estado: " + paquete.getEstadoActual());
-                    }
-                }
-                return;
-            }
-        }
-        System.out.println("Cliente no encontrado.");
-    }*/
+    }
 
     public static void actualizarDireccion(ArrayList<Cliente> listaClientes) {
         Scanner entrada = new Scanner(System.in);

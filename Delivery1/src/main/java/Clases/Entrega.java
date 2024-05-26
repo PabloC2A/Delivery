@@ -15,18 +15,20 @@ public class Entrega {
     private String codigo;
     private Date fecha;
     private String observacion;
-    private ArrayList<Entrega> entrega;
     private ArrayList<Cliente> cliente;
+    private int idPaquete;
+    private int idEmpleado;
 
     public Entrega() {
     }
 
-    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Entrega> entrega, ArrayList<Cliente> cliente) {
+    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Cliente> cliente, int idPaquete, int idEmpleado) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.observacion = observacion;
-        this.entrega = entrega;
         this.cliente = cliente;
+        this.idPaquete = idPaquete;
+        this.idEmpleado = idEmpleado;
     }
 
     public String getCodigo() {
@@ -53,14 +55,6 @@ public class Entrega {
         this.observacion = observacion;
     }
 
-    public ArrayList<Entrega> getEntrega() {
-        return entrega;
-    }
-
-    public void setEntrega(ArrayList<Entrega> entrega) {
-        this.entrega = entrega;
-    }
-
     public ArrayList<Cliente> getCliente() {
         return cliente;
     }
@@ -69,8 +63,25 @@ public class Entrega {
         this.cliente = cliente;
     }
 
+    public int getIdPaquete() {
+        return idPaquete;
+    }
+
+    public void setIdPaquete(int idPaquete) {
+        this.idPaquete = idPaquete;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
     @Override
     public String toString() {
-        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", entrega=" + entrega + ", cliente=" + cliente + '}';
+        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", cliente=" + cliente + ", idPaquete=" + idPaquete + ", idEmpleado=" + idEmpleado + '}';
     }
+    
 }
