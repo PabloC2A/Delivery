@@ -6,7 +6,6 @@ package Logica;
 
 import Clases.Cliente;
 import Clases.Direccion;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,50 +13,40 @@ import java.util.Scanner;
  * @author Usuario
  */
 public class validarActual {
-    public void validarActual(Cliente cliente) {
+    public static void comprobarDireccionActual(Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
-        boolean dirEncontrada = false;
 
-        ArrayList<Direccion> direcciones = cliente.getDireccion();
+        for (Direccion dir : cliente.getDireccion()) {
+            System.out.println("¿Es esta su dirección actual? " + dir);
+            System.out.println("Ingrese Sí = 1  |  No = 0");
+            int respuesta = scanner.nextInt();
 
-        for (Direccion dir : direcciones) {
-            System.out.println("¿Esta es su dirección actual? " + dir);
-            System.out.println("1 = Sí  |  0 = No");
-            int op = scanner.nextInt();
+            if (respuesta == 1) {
+                dir.setActual(1);
+            } else if (respuesta == 0) {
+                dir.setActual(0);
+                
+                System.out.println("Ingrese los nuevos datos de su dirección:");
+                System.out.print("Código: ");
+                String codigo = scanner.next();
 
-            switch (op) {
-                case 1:
-                    dir.setActual(1);
-                    dirEncontrada = true;
-                    System.out.println(dir + "Se confirmó como su direccion actual.");
-                    break;
-                case 0:
-                    dir.setActual(0);
-                    break;
-                default:
-                    System.out.println("Entrada no válida. Ingrese las opciones disponibles.");
-                    break;
+                System.out.print("Calle principal: ");
+                String calle1 = scanner.next();
+
+                System.out.print("Calle secundaria: ");
+                String calle2 = scanner.next();
+
+                System.out.print("Referencia: ");
+                String referencia = scanner.next();
+
+                // Crear la nueva dirección
+                Direccion nuevaDireccion = new Direccion(codigo, calle1, calle2, referencia, 1, cliente.getCedula());
+
+                // Añadir la nueva dirección a la lista de direcciones
+                cliente.getDireccion().add(nuevaDireccion);
+            } else {
+                System.out.println("Opción inválida. Por favor, ingrese 1 para SÍ o 0 para NO.");
             }
-
-            if (dirEncontrada) {
-                break;
-            }
-        }
-
-        if (!dirEncontrada) {
-            System.out.println("Ingrese los detalles de su nueva dirección:");
-            System.out.print("Código: ");
-            String codigo = scanner.next();
-            System.out.print("Calle 1: ");
-            String calle1 = scanner.next();
-            System.out.print("Calle 2: ");
-            String calle2 = scanner.next();
-            System.out.print("Referencia: ");
-            String referencia = scanner.next();
-
-            /*Direccion nuevaDireccion = new Direccion(codigo, calle1, calle2, referencia, 1, );
-            direcciones.add(nuevaDireccion);
-            System.out.println("Nueva dirección agregada.");*/
         }
     }
 }
