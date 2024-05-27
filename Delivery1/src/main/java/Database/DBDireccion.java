@@ -4,6 +4,7 @@
  */
 package Database;
 
+import Clases.Cliente;
 import Clases.Direccion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public class DBDireccion {
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
         return ps.executeQuery();
     }
-    
+
     public ResultSet obtenerDireccionPorCliente(Direccion objDireccion) throws SQLException {
         String consulta
                 = """
@@ -33,6 +34,30 @@ public class DBDireccion {
                   WHERE c.cedulaCliente = '?';""";
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
         ps.setString(1, objDireccion.getIdCliente());
+        return ps.executeQuery();
+    }
+
+    public ResultSet agregarDireccion(Direccion objDireccion) throws SQLException {
+        String consulta
+                = """
+                    INSERT INTO delivery.direccion (calle1, calle2, referencia, actual, cliente_idCli, cedulaClienteDir)
+                    VALUES ('?', '?', '?', ?, '?');""";
+        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setString(1, objDireccion.getCalle1());
+        ps.setString(2, objDireccion.getCalle2());
+        ps.setString(3, objDireccion.getReferencia());
+        ps.setInt(4, objDireccion.getActual());
+        ps.setString(5, objDireccion.getIdCliente());
+        return ps.executeQuery();
+    }
+
+    public ResultSet modifcarEstadoActualPorCliente(Direccion objDireccion, Cliente objCliente) throws SQLException {
+        String consulta
+                = """
+                   UPDATE delivery.direccion SET actual = ? WHERE cliente_idCli = ?""";
+        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setInt(1, objDireccion.getActual());
+        ps.setString(2, objCliente.getCedula());
         return ps.executeQuery();
     }
 }

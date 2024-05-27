@@ -40,7 +40,7 @@ public class Cliente extends Persona {
     public void setDireccion(ArrayList<Direccion> direccion) {
         this.direccion = direccion;
     }
-
+    
     @Override
     public String toString() {
         return "Cliente{" + "celular=" + celular + ", direccion=" + direccion + '}';
