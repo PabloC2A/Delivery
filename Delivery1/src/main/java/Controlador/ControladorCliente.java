@@ -21,7 +21,7 @@ public class ControladorCliente {
 
     public void crearDireccion(Direccion direccion) throws SQLException {
         objDBDireccion.agregarDireccion(direccion);
-        System.out.println("Actualizado.");
+        System.out.println("Creado.");
     }
 
     public void actualizarDireccion(Cliente cliente, Direccion direccion) throws SQLException {
