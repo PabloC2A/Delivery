@@ -221,7 +221,7 @@ public class Delivery1 {
         for (Paquete paquete : listaPaquetes) {
             if (paquete.getCodigo().equals(codigoPaquete)) {
                 Entrega entrega = new Entrega();
-                entrega.setCodigo(codigoPaquete);
+                entrega.setCodigoEntrega(codigoPaquete);
                 entrega.setFecha(new Date());
                 System.out.println("Ingrese observaciones de la entrega:");
                 entrega.setObservacion(entrada.nextLine());
