@@ -3,6 +3,7 @@ package Presentacion;
 import Clases.*;
 import Database.ValidarPassword;
 import Logica.*;
+import Controlador.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -16,6 +17,7 @@ public class Delivery1 {
         ArrayList<Direccion> listaDirecciones = new ArrayList<>();
         ArrayList<Entrega> listaEntregas = new ArrayList<>();
         ArrayList<Paquete> listaPaquetes = new ArrayList<>();
+        ControladorRepartidor controladorRepartidor = new ControladorRepartidor();
         Estado[] estados = new Estado[4];
         
         int op;
@@ -67,7 +69,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                registrarEntrega(listaEntregas, listaPaquetes);
+                                controladorRepartidor.registrarEntrega(listaEntregas, listaPaquetes, codigoPaquete, observaciones);
                             }
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
