@@ -69,7 +69,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                controladorRepartidor.registrarEntregaPaquete(listaEntregas, listaPaquetes, codigoPaquete, observaciones);
+                                
                             }
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
@@ -214,24 +214,8 @@ public class Delivery1 {
         System.out.println("Cliente no encontrado.");
     }
 
-    public static void registrarEntrega(ArrayList<Entrega> listaEntregas, ArrayList<Paquete> listaPaquetes) {
+    public static void registrarEntrega() {
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese el código del paquete:");
-        String codigoPaquete = entrada.nextLine();
-
-        for (Paquete paquete : listaPaquetes) {
-            if (paquete.getCodigo().equals(codigoPaquete)) {
-                Entrega entrega = new Entrega();
-                entrega.setCodigoEntrega(codigoPaquete);
-                entrega.setFecha(new Date());
-                System.out.println("Ingrese observaciones de la entrega:");
-                entrega.setObservacion(entrada.nextLine());
-                listaEntregas.add(entrega);
-                System.out.println("Entrega registrada exitosamente.");
-                return;
-            }
-        }
-        System.out.println("Paquete no encontrado.");
     }
 
     public static void registrarPaquete(ArrayList<Paquete> listaPaquetes) {
