@@ -10,12 +10,12 @@ public class Direccion {
     private String calle2;
     private String referencia;
     private int actual;
-    private int idCliente;
+    private String idCliente;
 
     public Direccion() {
     }
 
-    public Direccion(String codigo, String calle1, String calle2, String referencia, int actual, int idCliente) {
+    public Direccion(String codigo, String calle1, String calle2, String referencia, int actual, String idCliente) {
         this.codigo = codigo;
         this.calle1 = calle1;
         this.calle2 = calle2;
@@ -64,11 +64,11 @@ public class Direccion {
         this.actual = actual;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -76,5 +76,4 @@ public class Direccion {
     public String toString() {
         return "Direccion{" + "codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referencia=" + referencia + ", actual=" + actual + ", idCliente=" + idCliente + '}';
     }
-    
 }
