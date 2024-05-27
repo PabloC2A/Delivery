@@ -29,6 +29,7 @@ public class DBCliente {
                 = "INSERT INTO delivery.persona (cedula, apellidos, nombres, mail) VALUES (?, ?, ?, ?)";
         String consultaCliente
                 = "INSERT INTO delivery.cliente (cedulaCliente, celular) VALUES (?, ?)";
+        
         PreparedStatement psPersona = BLcon.getConnection().prepareStatement(consultaPersona);
         PreparedStatement psCliente = BLcon.getConnection().prepareStatement(consultaCliente);
         // Insertar en la tabla persona
