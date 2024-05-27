@@ -11,6 +11,7 @@ public class Cliente extends Persona {
     private ArrayList<Direccion> direccion;
 
     public Cliente() {
+        this.direccion = new ArrayList<>();
     }
 
     public Cliente(String celular, ArrayList<Direccion> direccion) {

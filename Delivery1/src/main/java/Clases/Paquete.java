@@ -4,7 +4,6 @@
  */
 package Clases;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,10 +20,10 @@ public class Paquete {
 
     public Paquete() {
         this.estado = new Estado[] {
-            new Estado(1, "Creado", new Date(), ""),
-            new Estado(2, "Pendiente", null, ""),
-            new Estado(3, "Despachado", null, ""),
-            new Estado(4, "Entregado", null, "")
+            new Estado(1, "Creado", new Date(), "",0),
+            new Estado(2, "Pendiente", null, "",0),
+            new Estado(3, "Despachado", null, "",0),
+            new Estado(4, "Entregado", null, "",0)
         };
     }
 
@@ -35,10 +34,10 @@ public class Paquete {
         this.peso = peso;
         this.alto = alto;
         this.estado = new Estado[] {
-            new Estado(1, "Creado", new Date(), ""),
-            new Estado(2, "Pendiente", null, ""),
-            new Estado(3, "Despachado", null, ""),
-            new Estado(4, "Entregado", null, "")
+            new Estado(1, "Creado", new Date(), "",0),
+            new Estado(2, "Pendiente", null, "",0),
+            new Estado(3, "Despachado", null, "",0),
+            new Estado(4, "Entregado", null, "",0)
         };
     }
 

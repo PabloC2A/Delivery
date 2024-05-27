@@ -4,7 +4,6 @@
  */
 package Clases;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,31 +11,32 @@ import java.util.Date;
  * @author Pablo
  */
 public class Entrega {
-    private String codigo;
+    private String codigoEntrega;
     private Date fecha;
     private String observacion;
-    private ArrayList<Cliente> cliente;
-    private int idPaquete;
+    private int idCliente;
     private int idEmpleado;
+    private int idPaquete;
+
 
     public Entrega() {
     }
 
-    public Entrega(String codigo, Date fecha, String observacion, ArrayList<Cliente> cliente, int idPaquete, int idEmpleado) {
-        this.codigo = codigo;
+    public Entrega(String codigoEntrega, Date fecha, String observacion, int idCliente, int idEmpleado, int idPaquete) {
+        this.codigoEntrega = codigoEntrega;
         this.fecha = fecha;
         this.observacion = observacion;
-        this.cliente = cliente;
-        this.idPaquete = idPaquete;
+        this.idCliente = idCliente;
         this.idEmpleado = idEmpleado;
+        this.idPaquete = idPaquete;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodigoEntrega() {
+        return codigoEntrega;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodigoEntrega(String codigoEntrega) {
+        this.codigoEntrega = codigoEntrega;
     }
 
     public Date getFecha() {
@@ -55,20 +55,12 @@ public class Entrega {
         this.observacion = observacion;
     }
 
-    public ArrayList<Cliente> getCliente() {
-        return cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setCliente(ArrayList<Cliente> cliente) {
-        this.cliente = cliente;
-    }
-
-    public int getIdPaquete() {
-        return idPaquete;
-    }
-
-    public void setIdPaquete(int idPaquete) {
-        this.idPaquete = idPaquete;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public int getIdEmpleado() {
@@ -79,9 +71,16 @@ public class Entrega {
         this.idEmpleado = idEmpleado;
     }
 
+    public int getIdPaquete() {
+        return idPaquete;
+    }
+
+    public void setIdPaquete(int idPaquete) {
+        this.idPaquete = idPaquete;
+    }
+
     @Override
     public String toString() {
-        return "Entrega{" + "codigo=" + codigo + ", fecha=" + fecha + ", observacion=" + observacion + ", cliente=" + cliente + ", idPaquete=" + idPaquete + ", idEmpleado=" + idEmpleado + '}';
+        return "Entrega{" + "codigoEntrega=" + codigoEntrega + ", fecha=" + fecha + ", observacion=" + observacion + ", idCliente=" + idCliente + ", idEmpleado=" + idEmpleado + ", idPaquete=" + idPaquete + '}';
     }
-    
 }

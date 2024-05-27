@@ -4,7 +4,6 @@
  */
 package Clases;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -16,25 +15,17 @@ public class Estado {
     private String estado;
     private Date fecha;
     private String observacion;
-    private ArrayList<Paquete> idPaquete;
+    private int idPaquete;
 
     public Estado() {
-        this.idPaquete = new ArrayList<>(4);
     }
 
-    public Estado(int tipo, String estado, Date fecha, String observacion, ArrayList<Paquete> idPaquete) {
+    public Estado(int tipo, String estado, Date fecha, String observacion, int idPaquete) {
         this.tipo = tipo;
         this.estado = estado;
         this.fecha = fecha;
         this.observacion = observacion;
-        this.idPaquete =idPaquete;
-    }
-    
-    public Estado(int tipo, String estado, Date fecha, String observacion) {
-        this.tipo = tipo;
-        this.estado = estado;
-        this.fecha = fecha;
-        this.observacion = observacion;
+        this.idPaquete = idPaquete;
     }
 
     public int getTipo() {
@@ -69,11 +60,11 @@ public class Estado {
         this.observacion = observacion;
     }
 
-    public ArrayList<Paquete> getIdPaquete() {
+    public int getIdPaquete() {
         return idPaquete;
     }
 
-    public void setIdPaquete(ArrayList<Paquete> idPaquete) {
+    public void setIdPaquete(int idPaquete) {
         this.idPaquete = idPaquete;
     }
 
