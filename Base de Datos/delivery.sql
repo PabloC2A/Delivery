@@ -30,12 +30,12 @@ ENGINE = InnoDB;
 -- Table `delivery`.`empleado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`empleado` (
-  `cedula` VARCHAR(10) NOT NULL,
+  `cedulaEmpleado` VARCHAR(10) NOT NULL,
   `ciudad` VARCHAR(50) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
-  INDEX `fk_empleado_persona1_idx` (`cedula` ASC) VISIBLE,
-  PRIMARY KEY (`cedula`),
+  INDEX `fk_empleado_persona1_idx` (`cedulaEmpleado` ASC) VISIBLE,
+  PRIMARY KEY (`cedulaEmpleado`),
   CONSTRAINT `fk_empleado_persona1`
-    FOREIGN KEY (`cedula`)
+    FOREIGN KEY (`cedulaEmpleado`)
     REFERENCES `delivery`.`persona` (`cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -48,12 +48,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`bodeguero` (
   `idBod` INT NOT NULL AUTO_INCREMENT,
   `local` VARCHAR(50) NOT NULL,
-  `cedula` VARCHAR(10) NOT NULL,
+  `cedulaBodeguero` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idBod`),
-  INDEX `fk_bodeguero_empleado1_idx` (`cedula` ASC) VISIBLE,
+  INDEX `fk_bodeguero_empleado1_idx` (`cedulaBodeguero` ASC) VISIBLE,
   CONSTRAINT `fk_bodeguero_empleado1`
-    FOREIGN KEY (`cedula`)
-    REFERENCES `delivery`.`empleado` (`cedula`)
+    FOREIGN KEY (`cedulaBodeguero`)
+    REFERENCES `delivery`.`empleado` (`cedulaEmpleado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -63,12 +63,12 @@ ENGINE = InnoDB;
 -- Table `delivery`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`cliente` (
-  `cedula` VARCHAR(10) NOT NULL,
+  `cedulaCliente` VARCHAR(10) NOT NULL,
   `celular` VARCHAR(10) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
-  PRIMARY KEY (`cedula`),
-  INDEX `fk_cliente_persona1_idx` (`cedula` ASC) VISIBLE,
+  PRIMARY KEY (`cedulaCliente`),
+  INDEX `fk_cliente_persona1_idx` (`cedulaCliente` ASC) VISIBLE,
   CONSTRAINT `fk_cliente_persona1`
-    FOREIGN KEY (`cedula`)
+    FOREIGN KEY (`cedulaCliente`)
     REFERENCES `delivery`.`persona` (`cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -85,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `delivery`.`direccion` (
   `referencia` VARCHAR(30) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
   `actual` INT NOT NULL,
   `cliente_idCli` INT NOT NULL,
-  `cedula` VARCHAR(10) NOT NULL,
+  `cedulaClienteDir` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`codigo`),
-  INDEX `fk_direccion_cliente1_idx` (`cedula` ASC) VISIBLE,
+  INDEX `fk_direccion_cliente1_idx` (`cedulaClienteDir` ASC) VISIBLE,
   CONSTRAINT `fk_direccion_cliente1`
-    FOREIGN KEY (`cedula`)
-    REFERENCES `delivery`.`cliente` (`cedula`)
+    FOREIGN KEY (`cedulaClienteDir`)
+    REFERENCES `delivery`.`cliente` (`cedulaCliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -130,12 +130,12 @@ CREATE TABLE IF NOT EXISTS `delivery`.`entrega` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_entrega_cliente1`
     FOREIGN KEY (`clienteCedula`)
-    REFERENCES `delivery`.`cliente` (`cedula`)
+    REFERENCES `delivery`.`cliente` (`cedulaCliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_entrega_empleado1`
     FOREIGN KEY (`empleadoCedula`)
-    REFERENCES `delivery`.`empleado` (`cedula`)
+    REFERENCES `delivery`.`empleado` (`cedulaEmpleado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -167,12 +167,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`repartidor` (
   `idRep` INT NOT NULL AUTO_INCREMENT,
   `zona` INT NOT NULL,
-  `cedula` VARCHAR(10) NOT NULL,
+  `cedulaBodeguero` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idRep`),
-  INDEX `fk_repartidor_empleado1_idx` (`cedula` ASC) VISIBLE,
+  INDEX `fk_repartidor_empleado1_idx` (`cedulaBodeguero` ASC) VISIBLE,
   CONSTRAINT `fk_repartidor_empleado1`
-    FOREIGN KEY (`cedula`)
-    REFERENCES `delivery`.`empleado` (`cedula`)
+    FOREIGN KEY (`cedulaBodeguero`)
+    REFERENCES `delivery`.`empleado` (`cedulaEmpleado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

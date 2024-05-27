@@ -14,11 +14,14 @@ import java.sql.SQLException;
  * @author Pablo
  */
 public class DBPaquetes {
+
     Conexion BLcon = new Conexion();
-    
-    public ResultSet ObtenerPaquetesPorCliente() throws ClassNotFoundException, SQLException{
-        String Sentencia = "SELECT * FROM paquete;";
-        PreparedStatement ps= BLcon.getConnection().prepareStatement(Sentencia);
+
+    public ResultSet obtenerPaquetePorCodigo(Paquete objPaquete) throws SQLException {
+        String consulta
+                = "SELECT idPaquete, codigoPaq, descripcion, peso, alto FROM paquete WHERE codigoPaq = ?;";
+        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setString(1, objPaquete.getCodigo());
         return ps.executeQuery();
     }
 }
