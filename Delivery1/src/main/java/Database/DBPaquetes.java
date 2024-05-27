@@ -16,10 +16,9 @@ import java.sql.SQLException;
 public class DBPaquetes {
     Conexion BLcon = new Conexion();
     
-    public ResultSet RecuperarUsuarios(Paquete objPaquete) throws ClassNotFoundException, SQLException{
-        String Sentencia = "SELECT * FROM programacion_avanzada.clientes where cedula = ?;";
+    public ResultSet ObtenerPaquetesPorCliente() throws ClassNotFoundException, SQLException{
+        String Sentencia = "SELECT * FROM paquete;";
         PreparedStatement ps= BLcon.getConnection().prepareStatement(Sentencia);
-        ps.setString(1, objPaquete.getCedula());
         return ps.executeQuery();
     }
 }
