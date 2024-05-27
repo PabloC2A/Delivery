@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Usuario
  */
 public class validarActual {
-    public static void comprobarDireccionActual(Cliente cliente) {
+    public static void validarActual(Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
 
         for (Direccion dir : cliente.getDireccion()) {
