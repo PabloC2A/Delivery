@@ -13,7 +13,6 @@ public class ValidarPassword {
         String password;
         
         System.out.println("Ingrese la contraseña de la base de datos: ");
-        sc.nextLine();
         password = sc.nextLine();
         
         Conexion BLcon = new Conexion(password);
