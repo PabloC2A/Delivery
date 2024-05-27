@@ -23,4 +23,16 @@ public class DBDireccion {
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
         return ps.executeQuery();
     }
+    
+    public ResultSet obtenerDireccionPorCliente(Direccion objDireccion) throws SQLException {
+        String consulta
+                = """
+                  SELECT *
+                  FROM delivery.direccion d
+                  INNER JOIN delivery.cliente c ON d.cedulaClienteDir = c.cedulaCliente
+                  WHERE c.cedulaCliente = '?';""";
+        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setString(1, objDireccion.getIdCliente());
+        return ps.executeQuery();
+    }
 }
