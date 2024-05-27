@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DBCliente {
         Conexion BLcon = new Conexion();
 
-    public ResultSet obtenerPaquetes(Cliente objCliente) throws SQLException {
+    public ResultSet obtenerClientes(Cliente objCliente) throws SQLException {
         String consulta
                 = "SELECT FROM cliente WHERE *";
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);

@@ -17,7 +17,7 @@ public class DBDireccion {
 
     Conexion BLcon = new Conexion();
 
-    public ResultSet obtenerPaquetes(Direccion objDireccion) throws SQLException {
+    public ResultSet obtenerDirecciones(Direccion objDireccion) throws SQLException {
         String consulta
                 = "SELECT FROM direccion WHERE *";
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
