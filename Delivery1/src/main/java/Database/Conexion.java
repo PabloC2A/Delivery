@@ -33,6 +33,12 @@ public class Conexion {
     }
 
     public void CerrarConexion() throws SQLException {
-        con.close();
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 }
