@@ -69,7 +69,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                controladorRepartidor.registrarEntrega(listaEntregas, listaPaquetes, codigoPaquete, observaciones);
+                                controladorRepartidor.registrarEntregaPaquete(listaEntregas, listaPaquetes, codigoPaquete, observaciones);
                             }
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
