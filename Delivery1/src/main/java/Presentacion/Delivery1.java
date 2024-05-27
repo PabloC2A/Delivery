@@ -205,7 +205,7 @@ public class Delivery1 {
 
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
-                new validarActual().comprobarDireccionActual(cliente);
+                new validarActual().validarActual(cliente);
                 return;
             }
         }

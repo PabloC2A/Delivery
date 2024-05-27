@@ -25,6 +25,7 @@ public class Conexion {
                 return con;
             } catch (SQLException e) {
                 System.out.println("Error al conectar: ");
+                System.out.println(e);
                 return null;
             }
         } else {
