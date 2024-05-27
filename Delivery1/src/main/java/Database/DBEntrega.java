@@ -5,6 +5,7 @@
 package Database;
 
 import Clases.Entrega;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class DBEntrega {
         ps.setString(1, objEntrega.getIdCliente());
         return ps.executeQuery();
     }
-    
+
     public ResultSet obtenerEntregasPorCodPaquete(Entrega objEntrega) throws SQLException {
         String consulta
                 = """
@@ -45,5 +46,17 @@ public class DBEntrega {
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
         ps.setInt(1, objEntrega.getIdPaquete());
         return ps.executeQuery();
+    }
+
+    public void insertarEntrega(Entrega entrega) throws SQLException {
+        String consulta = "INSERT INTO delivery.entrega (codigoEntrega, fecha, observacion, idPaquete, clienteCedula, empleadoCedula) VALUES (?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setString(1, entrega.getCodigoEntrega());
+        ps.setDate(2, (Date) entrega.getFecha());
+        ps.setString(3, entrega.getObservacion());
+        ps.setInt(4, entrega.getIdPaquete());
+        ps.setString(5, entrega.getIdCliente());
+        ps.setString(6, entrega.getIdEmpleado());
     }
 }
