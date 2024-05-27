@@ -14,15 +14,15 @@ public class Entrega {
     private String codigoEntrega;
     private Date fecha;
     private String observacion;
-    private int idCliente;
-    private int idEmpleado;
+    private String idCliente;
+    private String idEmpleado;
     private int idPaquete;
 
 
     public Entrega() {
     }
 
-    public Entrega(String codigoEntrega, Date fecha, String observacion, int idCliente, int idEmpleado, int idPaquete) {
+    public Entrega(String codigoEntrega, Date fecha, String observacion, String idCliente, String idEmpleado, int idPaquete) {
         this.codigoEntrega = codigoEntrega;
         this.fecha = fecha;
         this.observacion = observacion;
@@ -55,19 +55,19 @@ public class Entrega {
         this.observacion = observacion;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdEmpleado() {
+    public String getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
+    public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
