@@ -1,32 +1,31 @@
 package Controlador;
 import Clases.Cliente;
 import Clases.Direccion;
+import Database.DBCliente;
+import Database.DBDireccion;
 import Logica.validarActual;
+import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
  * @author ruben
  */
 public class ControladorCliente {
-    public void revisarEstadoPaquete(ArrayList<Cliente> listaClientes, String cedula) {
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getCedula().equals(cedula)) {
-                for (Direccion direccion : cliente.getDireccion()) {
-                    System.out.println(direccion);
-                }
-                return;
-            }
-        }
-        System.out.println("Cliente no encontrado.");
+    
+    DBCliente objBDCliente = new DBCliente();
+    DBDireccion objDBDireccion = new DBDireccion();
+
+    public void AgregarCliente(Cliente objCliente) throws SQLException, ClassNotFoundException {
+        objBDCliente.registrarCliente(objCliente);
     }
 
-    public void actualizarDireccion(ArrayList<Cliente> listaClientes, String cedula) {
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getCedula().equals(cedula)) {
-                new validarActual().validarActual(cliente);
-                return;
-            }
-        }
-        System.out.println("Cliente no encontrado.");
+    public void crearDireccion(Direccion direccion) throws SQLException {
+        objDBDireccion.agregarDireccion(direccion);
+        System.out.println("Actualizado.");
+    }
+
+    public void actualizarDireccion(Cliente cliente, Direccion direccion) throws SQLException {
+        objDBDireccion.modifcarEstadoActualPorCliente(direccion, cliente);
+        System.out.println("Actualizado.");
     }
 }
