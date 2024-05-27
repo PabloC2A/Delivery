@@ -12,7 +12,7 @@ public class ValidarPassword {
         boolean bandera = true;
         String password;
         
-        System.out.println("Ingrese la contraseña de la base de datos");
+        System.out.println("Ingrese la contraseña de la base de datos: ");
         sc.nextLine();
         password = sc.nextLine();
         

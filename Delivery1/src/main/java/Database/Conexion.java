@@ -24,7 +24,7 @@ public class Conexion {
                 con = DriverManager.getConnection(URL, USER, PASSWORD);
                 return con;
             } catch (SQLException e) {
-                System.out.println("Error al conectar: " + e.getMessage());
+                System.out.println("Error al conectar: ");
                 return null;
             }
         } else {

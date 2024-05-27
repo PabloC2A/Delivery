@@ -1,6 +1,7 @@
 package Presentacion;
 
 import Clases.*;
+import Database.ValidarPassword;
 import Logica.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +21,9 @@ public class Delivery1 {
         int op;
         String aux;
 
+        ValidarPassword vpassword = new ValidarPassword();
+        vpassword.validarClave();
+        
         do {
             System.out.println("-----------------------");
             System.out.println("|Cliente         [1]  |");
