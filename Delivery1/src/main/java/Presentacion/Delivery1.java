@@ -41,7 +41,7 @@ public class Delivery1 {
                 case 1 -> {
                     do {
                         System.out.println("--------------------------------------------------------");
-                        System.out.println("|Revisar estado Paquete                           [1]  |");
+                        System.out.println("|Revisar estado de Paquetes                       [1]  |");
                         System.out.println("|Agregar nueva dirección o actualizar dirección   [2]  |");
                         System.out.println("|Salir                                            [3]  |");
                         System.out.println("--------------------------------------------------------");
@@ -185,18 +185,12 @@ public class Delivery1 {
 
     public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese la cédula del cliente:");
-        String cedula = entrada.nextLine();
-
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getCedula().equals(cedula)) {
-                for (Direccion direccion : cliente.getDireccion()) {
-                    System.out.println(direccion);
-                }
-                return;
-            }
-        }
-        System.out.println("Cliente no encontrado.");
+        Cliente objClienteMain = new Cliente();
+        ControladorCliente controladorClienteMain = new ControladorCliente();
+        
+        System.out.println("Ingrese su cedula:");
+        objClienteMain.setCedula(entrada.nextLine());
+        
     }
 
     public static void actualizarDireccion(ArrayList<Cliente> listaClientes) {
@@ -221,15 +215,13 @@ public class Delivery1 {
         Scanner entrada = new Scanner(System.in);
         Paquete paquete = new Paquete();
 
-        System.out.println("Ingrese el ID del paquete:");
-        paquete.setIdPaquete(Integer.parseInt(entrada.nextLine()));
-        System.out.println("Ingrese el código del paquete:");
+        System.out.print("Ingrese el código del paquete:");
         paquete.setCodigo(entrada.nextLine());
-        System.out.println("Ingrese la descripción del paquete:");
+        System.out.print("Ingrese la descripción del paquete:");
         paquete.setDescripcion(entrada.nextLine());
-        System.out.println("Ingrese el peso del paquete:");
+        System.out.print("Ingrese el peso del paquete:");
         paquete.setPeso(Double.parseDouble(entrada.nextLine()));
-        System.out.println("Ingrese el alto del paquete:");
+        System.out.print("Ingrese el alto del paquete:");
         paquete.setAlto(Double.parseDouble(entrada.nextLine()));
 
         listaPaquetes.add(paquete);

@@ -19,22 +19,35 @@ public class DBPaquetes {
 
     Conexion BLcon = new Conexion();
 
-    public ResultSet obtenerPaquetes(Paquete objPaquete) throws SQLException {
+    public ResultSet obtenerPaquetesPorCliente(Cliente objCliente) throws SQLException {
         String consulta
-                = "SELECT FROM paquete WHERE *";
+                = """
+                  SELECT 
+                      p.idPaquete, 
+                      p.codigo, 
+                      p.descripcion, 
+                      p.peso, 
+                      p.alto
+                  FROM 
+                      entrega e
+                  INNER JOIN 
+                      paquete p ON e.Paquete_idPaquete = p.idPaquete
+                  WHERE 
+                      e.Cliente_idCliente = ?;""";
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        ps.setString(0, objCliente.getCedula());
         return ps.executeQuery();
     }
-    
+
     public void registrarPaquete(Paquete objPaquete) throws SQLException {
-        String consulta 
+        String consulta
                 = "INSERT INTO delivery.paquete (idPaquete, codigoPaq, descripcion, peso, alto) VALUES (?, ?, ?, ?, ?)";
-        
+
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
         ps.setInt(1, objPaquete.getIdPaquete());
         ps.setString(2, objPaquete.getCodigo());
         ps.setString(3, objPaquete.getDescripcion());
-        ps.setDouble(4,objPaquete.getPeso());
+        ps.setDouble(4, objPaquete.getPeso());
         ps.setDouble(5, objPaquete.getAlto());
         ps.executeQuery();
     }

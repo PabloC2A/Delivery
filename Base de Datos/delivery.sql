@@ -84,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `delivery`.`direccion` (
   `calle2` VARCHAR(20) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
   `referencia` VARCHAR(30) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
   `actual` INT NOT NULL,
-  `cliente_idCli` INT NOT NULL,
   `cedulaClienteDir` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`codigo`),
   INDEX `fk_direccion_cliente1_idx` (`cedulaClienteDir` ASC) VISIBLE,
@@ -103,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `delivery`.`paquete` (
   `idPaquete` INT NOT NULL,
   `codigoPaq` VARCHAR(10) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
   `descripcion` VARCHAR(20) COLLATE 'utf8mb3_spanish_ci' NOT NULL,
-  `peso` INT NOT NULL,
-  `alto` INT NOT NULL,
+  `peso` DOUBLE NOT NULL,
+  `alto` DOUBLE NOT NULL,
   PRIMARY KEY (`idPaquete`))
 ENGINE = InnoDB;
 
