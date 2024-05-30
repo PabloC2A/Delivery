@@ -3,7 +3,6 @@ import Clases.Cliente;
 import Clases.Direccion;
 import Database.DBCliente;
 import Database.DBDireccion;
-import Logica.validarActual;
 import java.sql.SQLException;
 import java.util.ArrayList;
 /**

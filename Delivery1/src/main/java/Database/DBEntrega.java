@@ -21,7 +21,7 @@ public class DBEntrega {
     public ResultSet obtenerEntregas(Entrega objEntrega) throws SQLException {
         String consulta
                 = "SELECT FROM entrega WHERE *";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         return ps.executeQuery();
     }
 
@@ -32,7 +32,7 @@ public class DBEntrega {
                   FROM delivery.entrega e
                   INNER JOIN delivery.cliente c ON e.clienteCedula = c.cedulaCliente
                   WHERE c.cedulaCliente = '?';""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setString(1, objEntrega.getIdCliente());
         return ps.executeQuery();
     }
@@ -43,7 +43,7 @@ public class DBEntrega {
                   SELECT *
                   FROM delivery.entrega
                   WHERE idPaquete = ?;""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setInt(1, objEntrega.getIdPaquete());
         return ps.executeQuery();
     }
@@ -51,7 +51,7 @@ public class DBEntrega {
     public void insertarEntrega(Entrega entrega) throws SQLException {
         String consulta = "INSERT INTO delivery.entrega (codigoEntrega, fecha, observacion, idPaquete, clienteCedula, empleadoCedula) VALUES (?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setString(1, entrega.getCodigoEntrega());
         ps.setDate(2, (Date) entrega.getFecha());
         ps.setString(3, entrega.getObservacion());

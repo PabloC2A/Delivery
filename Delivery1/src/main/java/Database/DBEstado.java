@@ -22,7 +22,7 @@ public class DBEstado {
                   SELECT *
                   FROM delivery.estado
                   WHERE paquete_idPaquete = ?;""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setInt(1, objEstado.getIdPaquete());
         return ps.executeQuery();
     }

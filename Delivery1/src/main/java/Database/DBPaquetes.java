@@ -34,7 +34,7 @@ public class DBPaquetes {
                       paquete p ON e.Paquete_idPaquete = p.idPaquete
                   WHERE 
                       e.Cliente_idCliente = ?;""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setString(1, objCliente.getCedula());
         return ps.executeQuery();
     }
@@ -43,7 +43,7 @@ public class DBPaquetes {
         String consulta
                 = "INSERT INTO delivery.paquete (idPaquete, codigoPaq, descripcion, peso, alto) VALUES (?, ?, ?, ?, ?)";
 
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setInt(1, objPaquete.getIdPaquete());
         ps.setString(2, objPaquete.getCodigo());
         ps.setString(3, objPaquete.getDescripcion());

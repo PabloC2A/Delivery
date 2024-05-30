@@ -20,7 +20,7 @@ public class DBBodeguero {
     public ResultSet obtenerBodegueros(Bodeguero objBodeguero) throws SQLException {
         String consulta
                 = "SELECT FROM bodeguero WHERE *";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         return ps.executeQuery();
     }
 }

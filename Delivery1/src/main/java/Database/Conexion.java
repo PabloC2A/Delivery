@@ -3,34 +3,24 @@ package Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Conexion {
+
     private Connection con;
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/delivery";
     private static final String USER = "root";
-    private static String PASSWORD;
+    private static final String PASSWORD = "123456789";
 
-    public Conexion() {
-    }
-
-    public Conexion(String passwordAux) {
-        Conexion.PASSWORD = passwordAux;
-    }
-
-    public Connection getConnection() {
-        if (con == null) {
-            try {
-                con = DriverManager.getConnection(URL, USER, PASSWORD);
-                return con;
-            } catch (SQLException e) {
-                System.out.println("Error al conectar: ");
-                System.out.println(e);
-                return null;
-            }
-        } else {
+    public Connection abrir() {
+        try {
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
             return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     public void CerrarConexion() throws SQLException {

@@ -19,7 +19,7 @@ public class DBRepartidor {
     public ResultSet obtenerRepartidores(Repartidor objRepartidor) throws SQLException {
         String consulta
                 = "SELECT FROM repartidor WHERE *";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         return ps.executeQuery();
     }
 }

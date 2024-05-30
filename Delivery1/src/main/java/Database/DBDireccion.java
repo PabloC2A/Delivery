@@ -21,7 +21,7 @@ public class DBDireccion {
     public ResultSet obtenerDirecciones(Direccion objDireccion) throws SQLException {
         String consulta
                 = "SELECT FROM direccion WHERE *";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         return ps.executeQuery();
     }
 
@@ -32,7 +32,7 @@ public class DBDireccion {
                   FROM delivery.direccion d
                   INNER JOIN delivery.cliente c ON d.cedulaClienteDir = c.cedulaCliente
                   WHERE c.cedulaCliente = '?';""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setString(1, objDireccion.getIdCliente());
         return ps.executeQuery();
     }
@@ -42,7 +42,7 @@ public class DBDireccion {
                 = """
                     INSERT INTO delivery.direccion (calle1, calle2, referencia, actual, cliente_idCli, cedulaClienteDir)
                     VALUES ('?', '?', '?', ?, '?');""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setString(1, objDireccion.getCalle1());
         ps.setString(2, objDireccion.getCalle2());
         ps.setString(3, objDireccion.getReferencia());
@@ -55,7 +55,7 @@ public class DBDireccion {
         String consulta
                 = """
                    UPDATE delivery.direccion SET actual = ? WHERE cliente_idCli = ?""";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         ps.setInt(1, objDireccion.getActual());
         ps.setString(2, objCliente.getCedula());
         return ps.executeQuery();

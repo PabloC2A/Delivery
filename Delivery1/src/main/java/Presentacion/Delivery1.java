@@ -1,7 +1,6 @@
 package Presentacion;
 
 import Clases.*;
-import Database.ValidarPassword;
 import Logica.*;
 import Controlador.*;
 import java.sql.SQLException;
@@ -24,8 +23,6 @@ public class Delivery1 {
         int op;
         String aux;
 
-        ValidarPassword vpassword = new ValidarPassword();
-        vpassword.validarClave();
 
         do {
             System.out.println("-----------------------");

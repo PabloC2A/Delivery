@@ -17,10 +17,14 @@ public class DBCliente {
 
     Conexion BLcon = new Conexion();
 
+    public DBCliente() {
+        BLcon.abrir();
+    }
+    
     public ResultSet obtenerClientes(Cliente objCliente) throws SQLException {
         String consulta
-                = "SELECT FROM cliente WHERE *";
-        PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
+                = "SELECT * FROM cliente;";
+        PreparedStatement ps = BLcon.abrir().prepareStatement(consulta);
         return ps.executeQuery();
     }
 
@@ -30,8 +34,8 @@ public class DBCliente {
         String consultaCliente
                 = "insert into cliente (celular,Persona_cedula) VALUES (?,?);";
         
-        PreparedStatement psPersona = BLcon.getConnection().prepareStatement(consultaPersona);
-        PreparedStatement psCliente = BLcon.getConnection().prepareStatement(consultaCliente);
+        PreparedStatement psPersona = BLcon.abrir().prepareStatement(consultaPersona);
+        PreparedStatement psCliente = BLcon.abrir().prepareStatement(consultaCliente);
         // Insertar en la tabla persona
         psPersona.setString(1, objCliente.getCedula());
         psPersona.setString(2, objCliente.getApellidos());
