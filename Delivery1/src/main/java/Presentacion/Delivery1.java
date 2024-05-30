@@ -4,28 +4,29 @@ import Clases.*;
 import Database.ValidarPassword;
 import Logica.*;
 import Controlador.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-
 public class Delivery1 {
+
     static Scanner entrada = new Scanner(System.in);
-    
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws SQLException {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         ArrayList<Direccion> listaDirecciones = new ArrayList<>();
         ArrayList<Entrega> listaEntregas = new ArrayList<>();
         ArrayList<Paquete> listaPaquetes = new ArrayList<>();
         ControladorRepartidor controladorRepartidor = new ControladorRepartidor();
         Estado[] estados = new Estado[4];
-        
+
         int op;
         String aux;
 
         ValidarPassword vpassword = new ValidarPassword();
         vpassword.validarClave();
-        
+
         do {
             System.out.println("-----------------------");
             System.out.println("|Cliente         [1]  |");
@@ -49,12 +50,13 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                revisarEstadoPaquete(listaClientes);
+                                revisarEstadoPaquete();
                             }
                             case 2 -> {
                                 actualizarDireccion(listaClientes);
                             }
-                            default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                            default ->
+                                System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 3);
                 }
@@ -69,9 +71,10 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                
+
                             }
-                            default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                            default ->
+                                System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 2);
                 }
@@ -88,7 +91,7 @@ public class Delivery1 {
                         op = Integer.parseInt(aux);
                         switch (op) {
                             case 1 -> {
-                                listaClientes.add(ingresarCliente());
+                                ingresarCliente();
                             }
                             case 2 -> {
                                 listaDirecciones.add(ingresarDireccion());
@@ -113,15 +116,18 @@ public class Delivery1 {
                                         case 2 -> {
                                             despacharPaquete(listaPaquetes);
                                         }
-                                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                                        default ->
+                                            System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                                     }
                                 } while (op != 3);
                             }
-                            default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                            default ->
+                                System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 5);
                 }
-                default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                default ->
+                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
             }
 
         } while (op != 4);
@@ -183,14 +189,20 @@ public class Delivery1 {
         return cliente;
     }
 
-    public static void revisarEstadoPaquete(ArrayList<Cliente> listaClientes) {
+    public static void revisarEstadoPaquete() throws SQLException {
         Scanner entrada = new Scanner(System.in);
         Cliente objClienteMain = new Cliente();
-        ControladorCliente controladorClienteMain = new ControladorCliente();
-        
+        ControladorPaquete controladorPaqueteMain = new ControladorPaquete();
+        ArrayList<Paquete> paquetes;
+
         System.out.println("Ingrese su cedula:");
         objClienteMain.setCedula(entrada.nextLine());
-        
+
+        paquetes = controladorPaqueteMain.obtenerPaquetes(objClienteMain);
+
+        for (Paquete paq : paquetes) {
+            System.out.printf(" %d %s %s %d %d ", paq.getIdPaquete(), paq.getCodigo(), paq.getDescripcion(), paq.getPeso(), paq.getAlto());
+        }
     }
 
     public static void actualizarDireccion(ArrayList<Cliente> listaClientes) {
@@ -246,7 +258,7 @@ public class Delivery1 {
         }
         System.out.println("Paquete no encontrado.");
     }
-    
+
     public static void cambiarEstadoAPendiente(ArrayList<Paquete> listaPaquetes) {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese el código del paquete a cambiar a estado pendiente:");
@@ -265,5 +277,40 @@ public class Delivery1 {
         }
         System.out.println("Paquete no encontrado.");
     }
+
+    public static void ingresarCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
+        Scanner entrada = new Scanner(System.in);
+        boolean bandera = true;
+        ControladorCliente objControladorCliente = new ControladorCliente();
+
+        while (bandera) {
+            bandera = false;
+            System.out.println("Ingrese la cédula del cliente:");
+            cliente.setCedula(entrada.nextLine());
+            if (!validarCedula.ValidaCedula(cliente)) {
+                System.out.println("Cédula no válida. Debe contener 10 dígitos.");
+                bandera = true;
+            }
+
+            System.out.println("Ingrese los apellidos del cliente:");
+            cliente.setApellidos(entrada.nextLine());
+
+            System.out.println("Ingrese los nombres del cliente:");
+            cliente.setNombres(entrada.nextLine());
+
+            System.out.println("Ingrese el correo del cliente:");
+            cliente.setMail(entrada.nextLine());
+            if (!validarEmail.validarCorreo(cliente)) {
+                System.out.println("Correo no válido.");
+                bandera = true;
+            }
+
+            System.out.println("Ingrese el celular del cliente:");
+            cliente.setCelular(entrada.nextLine());
+
+            cliente.setDireccion(new ArrayList<>());
+            System.out.println("Cliente agregado exitosamente.");
+        }
+        objControladorCliente.AgregarCliente(cliente);
+    }
 }
-        

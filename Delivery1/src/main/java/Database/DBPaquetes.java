@@ -35,7 +35,7 @@ public class DBPaquetes {
                   WHERE 
                       e.Cliente_idCliente = ?;""";
         PreparedStatement ps = BLcon.getConnection().prepareStatement(consulta);
-        ps.setString(0, objCliente.getCedula());
+        ps.setString(1, objCliente.getCedula());
         return ps.executeQuery();
     }
 

@@ -26,9 +26,9 @@ public class DBCliente {
 
     public void registrarCliente(Cliente objCliente) throws SQLException {
         String consultaPersona
-                = "INSERT INTO delivery.persona (cedula, apellidos, nombres, mail) VALUES (?, ?, ?, ?)";
+                = "insert into persona (cedula,nombres,apellidos,mail) VALUES (?,?,?,?);";
         String consultaCliente
-                = "INSERT INTO delivery.cliente (cedulaCliente, celular) VALUES (?, ?)";
+                = "insert into cliente (celular,Persona_cedula) VALUES (?,?);";
         
         PreparedStatement psPersona = BLcon.getConnection().prepareStatement(consultaPersona);
         PreparedStatement psCliente = BLcon.getConnection().prepareStatement(consultaCliente);
@@ -39,8 +39,8 @@ public class DBCliente {
         psPersona.setString(4, objCliente.getMail());
         psPersona.executeQuery();
         // Insertar en la tabla cliente
-        psCliente.setString(1, objCliente.getCedula());
-        psCliente.setString(2, objCliente.getCelular());
+        psCliente.setString(1, objCliente.getCelular());
+        psCliente.setString(2, objCliente.getCedula());
         psCliente.executeQuery();
     }
 }
