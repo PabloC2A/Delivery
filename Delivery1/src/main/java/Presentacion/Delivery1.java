@@ -38,7 +38,7 @@ public class Delivery1 {
             op = Integer.parseInt(aux);
 
             switch (op) {
-                case 1:
+                case 1 -> {
                     do {
                         System.out.println("--------------------------------------------------------");
                         System.out.println("|Revisar estado Paquete                           [1]  |");
@@ -57,9 +57,9 @@ public class Delivery1 {
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 3);
-                    break;
+                }
 
-                case 2:
+                case 2 -> {
                     do {
                         System.out.println("--------------------------------------------");
                         System.out.println("Registrar la entrega de una paquete   [1]  |");
@@ -74,8 +74,8 @@ public class Delivery1 {
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 2);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     do {
                         System.out.println("------------------------------------------");
                         System.out.println("|Agregar un nuevo Cliente            [1]  |");
@@ -120,9 +120,8 @@ public class Delivery1 {
                             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
                         }
                     } while (op != 5);
-                    break;
-                default:
-                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
+                }
+                default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.\n");
             }
 
         } while (op != 4);
